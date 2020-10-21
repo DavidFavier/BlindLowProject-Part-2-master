@@ -26,6 +26,16 @@ namespace BlindLowVisionProject.Models
             return customer;
         }
 
+        public Customer Delete(int id)
+        {
+            Customer customer = _customerList.FirstOrDefault(e => e.Id == id);
+            if (customer != null)
+            {
+                _customerList.Remove(customer);
+            }
+            return customer;
+        }
+
         public IEnumerable<Customer> GetAllCustomers()
         {
             return _customerList;
@@ -34,6 +44,18 @@ namespace BlindLowVisionProject.Models
         public Customer GetCustomer(int Id)
         {
             return _customerList.FirstOrDefault(e => e.Id == Id);
+        }
+
+        public Customer Update(Customer customerChanges)
+        {
+            Customer customer = _customerList.FirstOrDefault(e => e.Id == customerChanges.Id);
+            if (customer != null)
+            {
+                customer.Name = customerChanges.Name;
+                customer.Email = customerChanges.Email;
+                customer.Department = customerChanges.Department;
+            }
+            return customer;
         }
     }
 }

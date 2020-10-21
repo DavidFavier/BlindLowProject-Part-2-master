@@ -9,6 +9,8 @@ namespace BlindLowVisionProject.Models
     {
         Customer GetCustomer(int Id);
         IEnumerable<Customer> GetAllCustomers();
-        Customer Add(Customer customer); 
+        Customer Add(Customer customer);
+        Customer Update(Customer customerChanges);
+        Customer Delete(int id);
     }
 }
